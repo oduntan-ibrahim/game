@@ -1,0 +1,48 @@
+ body{
+        font-family: Arial;
+        background-color: black;
+        color: white;
+      }
+      .move-name{
+        font-size: 40px;
+        font-weight: 500;
+      }
+      .css-move-name{
+        height:100px;
+        width: 100px;
+        border-radius: 50px;
+        font-family: Arial;
+        font-size: 20px;
+        color:aliceblue;
+        background-color: black;
+        border-color: white;
+        border: solid;
+        cursor: pointer;
+        margin-right: 7px;
+      }
+      .reset-score{
+        padding: 5px 10px;
+        font-family: Arial;
+        cursor: pointer;
+      }
+      .css-result{
+        font-weight: bold;
+        font-size: 20px;
+        margin-top: 50px;
+      }
+      .css-moves,.css-score{
+        font-size: 13px;
+        margin-bottom: 30px;
+      }
+      .inner-move{
+        color:white;
+        background-color: black;
+        height: 50px;
+        width: 50px;
+        border-color: white;
+        border: solid;
+        border-radius: 30px;
+        font-size: 10px;
+        margin-left: 4px;
+        margin-right: 4px;
+      }
