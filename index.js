@@ -1,4 +1,15 @@
- let score = JSON.parse(localStorage.getItem('score')) || {
+function keyBoardMove(event) {
+  if (event.key === 'r'){
+    playGame('rock');
+  }else if (event.key === 'p') {
+    playGame('paper');
+  }else if (event.key === 's') {
+    playGame('scissors');
+  }else if (event.key === 'a') {
+    autoPlay()
+  }
+}
+let score = JSON.parse(localStorage.getItem('score')) || {
           wins: 0,
           losses: 0,
           ties: 0
@@ -13,7 +24,24 @@
           ties: 0
         };
       }*/
-     
+      
+      let isAutoPlaying = false;
+      let intervalid;
+
+      function autoPlay() {
+        if (!isAutoPlaying) {
+          intervalid = setInterval(function() {
+          const playerMove = pickComputerMove();
+          playGame(playerMove);
+        }, 1500);
+        isAutoPlaying = true;
+        
+        } else{
+          clearInterval(intervalid);
+          isAutoPlaying = false;
+        }
+      }
+
       function playGame(playerMove) {
         const computerMove = pickComputerMove();
 

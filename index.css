@@ -20,7 +20,8 @@
         cursor: pointer;
         margin-right: 7px;
       }
-      .reset-score{
+      .reset-score,
+      .autoplay-button{
         padding: 5px 10px;
         font-family: Arial;
         cursor: pointer;

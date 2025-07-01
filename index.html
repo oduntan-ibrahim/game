@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-paper-scissors</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index-with-autoplay.css">
   </head>
-  <body>
+  <body onkeydown="keyBoardMove(event)">
     <p class="move-name">Rock Paper Scissors</p>
     <button onclick="
       playGame('rock')
@@ -33,6 +33,27 @@
       localStorage.removeItem('score');
       updateScoreElement();
     " class="reset-score">Reset score</button>
-  <script src="index.js"></script>
+    <button class="autoplay-button" onclick="
+      autoPlay();
+    ">Auto play</button>
+    <p>Rules of the game.</p>
+    <ol>
+      <li>Rock beats Scissors but Lose to Paper.</li>
+      <li>Paper beats Rock but Lose to Scissors.</li>
+      <li>Scissors beats Paper but Lose to Rock.</li>
+    </ol>
+    <p>How to play ?</p>
+    <ol>
+      <li>You can pick from the Rock, paper and Scissors button Above.</li>
+      <li>You can use the AutoPlay button to let computer pick  random moves for you and press the Autoplay again to stop computer from picking moves for you.</li>
+      <li>You can also use your keyboard if you are using a PC.</li>
+      <ul>
+        <li>'R' for Rock</li>
+        <li>'P' for Paper</li>
+        <li>'S' for Scissors</li>
+        <li>'A' for AutoPlay</li>
+      </ul>
+    </ol>
+  <script src="index-with-autoplay.js"></script>
   </body>
 </html>
