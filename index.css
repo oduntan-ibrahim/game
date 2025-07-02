@@ -21,7 +21,9 @@
         margin-right: 7px;
       }
       .reset-score,
-      .autoplay-button{
+      .autoplay-button,
+      .yes-css,
+      .no-css{
         padding: 5px 10px;
         font-family: Arial;
         cursor: pointer;

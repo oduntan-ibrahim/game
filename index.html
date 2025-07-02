@@ -6,19 +6,13 @@
     <title>Rock-paper-scissors</title>
     <link rel="stylesheet" href="index.css">
   </head>
-  <body onkeydown="keyBoardMove(event)">
+  <body>
     <p class="move-name">Rock Paper Scissors</p>
-    <button onclick="
-      playGame('rock')
-    " class="css-move-name">Rock</button>
+    <button class="css-move-name js-rock-button">Rock</button>
 
-    <button onclick="
-      playGame('paper')
-    " class="css-move-name">Paper</button>
+    <button class="css-move-name js-paper-button">Paper</button>
 
-    <button onclick="
-      playGame('scissors');
-    " class="css-move-name">scissors</button>
+    <button class="css-move-name js-scissors-button">scissors</button>
 
     <p class="js-result css-result"></p>
 
@@ -27,15 +21,12 @@
     <p class="js-score css-score"></p>
 
     <button onclick="
-      score.wins = 0;
-      score.losses = 0;
-      score.ties = 0;
-      localStorage.removeItem('score');
-      updateScoreElement();
+      confirmReset();
     " class="reset-score">Reset score</button>
-    <button class="autoplay-button" onclick="
+    <button class="autoplay-button js-autoplay js-auto-button" onclick="
       autoPlay();
     ">Auto play</button>
+    <p class="js-confirm"></p>
     <p>Rules of the game.</p>
     <ol>
       <li>Rock beats Scissors but Lose to Paper.</li>
@@ -45,7 +36,7 @@
     <p>How to play ?</p>
     <ol>
       <li>You can pick from the Rock, paper and Scissors button Above.</li>
-      <li>You can use the AutoPlay button to let computer pick  random moves for you and press the Autoplay again to stop computer from picking moves for you.</li>
+      <li>You can use the AutoPlay button to let computer pick  random moves for you and press the Stop play to stop computer from picking moves for you.</li>
       <li>You can also use your keyboard if you are using a PC.</li>
       <ul>
         <li>'R' for Rock</li>

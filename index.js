@@ -1,3 +1,16 @@
+document.body.addEventListener('keydown', (event) => {
+  if (event.key === 'r'){
+    playGame('rock');
+  }else if (event.key === 'p') {
+    playGame('paper');
+  }else if (event.key === 's') {
+    playGame('scissors');
+  }else if (event.key === 'a') {
+    autoPlay()
+  }
+});
+
+/*
 function keyBoardMove(event) {
   if (event.key === 'r'){
     playGame('rock');
@@ -9,6 +22,8 @@ function keyBoardMove(event) {
     autoPlay()
   }
 }
+*/
+
 let score = JSON.parse(localStorage.getItem('score')) || {
           wins: 0,
           losses: 0,
@@ -30,17 +45,31 @@ let score = JSON.parse(localStorage.getItem('score')) || {
 
       function autoPlay() {
         if (!isAutoPlaying) {
-          intervalid = setInterval(function() {
+          intervalid = setInterval(() => {
           const playerMove = pickComputerMove();
           playGame(playerMove);
         }, 1500);
         isAutoPlaying = true;
-        
         } else{
           clearInterval(intervalid);
           isAutoPlaying = false;
         }
+        const autoButton = document.querySelector('.js-autoplay');
+        if (autoButton.innerText === 'Auto play'){
+          autoButton.innerText = 'Stop play';
+        }else if (autoButton.innerText === 'Stop play'){
+          autoButton.innerText ='Auto play';
+        }
       }
+
+      document.querySelector('.js-rock-button')
+        .addEventListener('click', () => { playGame('rock') });
+      
+      document.querySelector('.js-paper-button')
+        .addEventListener('click', () => { playGame('paper') });
+
+      document.querySelector('.js-scissors-button')
+        .addEventListener('click', () => { playGame('scissors') });
 
       function playGame(playerMove) {
         const computerMove = pickComputerMove();
@@ -98,7 +127,30 @@ Wins: ${score.wins},    Losses: ${score.losses},    Ties: ${score.ties}`);*/
       function resultElement() {
         document.querySelector('.js-result').innerHTML = result;
       }
+      function confirmReset() {
+        let confirmElement = document.querySelector('.js-confirm')
+        confirmElement.innerHTML = `<p>Are you sure you want to reset the score? <button class="js-yes yes-css">Yes</button> <button class="js-no no-css">No</button></p>`;
 
+        document.querySelector('.js-yes').addEventListener('click', () => {confirmMove('yes')});
+
+        document.querySelector('.js-no').addEventListener('click', () => { confirmMove('no')});
+      }
+
+      function confirmMove(moves) {
+        confirmReset();
+        if (moves === 'yes') {
+          score.wins = 0;
+          score.losses = 0;
+          score.ties = 0;
+          localStorage.removeItem('score');
+          updateScoreElement();
+          const confirmElement = document.querySelector('.js-confirm');
+            confirmElement.innerHTML = '';
+        }else if (moves === 'no'){
+          const confirmElement = document.querySelector('.js-confirm');
+            confirmElement.innerHTML = '';
+        }
+      }
       function updateScoreElement() {
         document.querySelector('.js-score')
         .innerHTML = `Wins: ${score.wins},    Losses: ${score.    losses},    Ties: ${score.ties}`;
